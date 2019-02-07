@@ -49,7 +49,7 @@ server.post('/getMovies',function (request,response)  {
                 "page": "1",
                 "query":movie,
                 "language": "en-US",
-                "api_key": ""
+                "api_key": "d040a6cd3182427fd1b5e05967e143e8"
             });
             req.send("{}");
             req.end(function(res) {

@@ -1,0 +1,19 @@
+{
+  "name": "dialogflowchatbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/louisaoge/DialogFlowChatbot.git"
+  },
+  "author": "Okwuone louisa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/louisaoge/DialogFlowChatbot/issues"
+  },
+  "homepage": "https://github.com/louisaoge/DialogFlowChatbot#readme"
+}

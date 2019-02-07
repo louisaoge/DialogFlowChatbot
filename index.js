@@ -44,7 +44,7 @@ server.post('/getMovies',function (request,response)  {
             });
     } else if(request.body.queryResult.parameters['movie-name']) {
      //   console.log('popular-movies param found');
-        let movie = request.body.result.parameters[0].value;
+        let movie = request.body.result.queryText;
         var req = unirest("GET", "https://api.themoviedb.org/3/search/movie");
             req.query({
                 "include_adult": "false",

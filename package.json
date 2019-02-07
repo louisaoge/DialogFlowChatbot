@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/louisaoge/DialogFlowChatbot/issues"
   },
-  "homepage": "https://github.com/louisaoge/DialogFlowChatbot#readme"
+  "homepage": "https://github.com/louisaoge/DialogFlowChatbot#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "unirest": "^0.5.1"
+  }
 }

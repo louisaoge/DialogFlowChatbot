@@ -12,6 +12,7 @@ const server = express();
 server.use(bodyParser.json());
 server.post('/getMovies',function (request,response)  {
     if(request.body.queryResult.parameters['top-rated']) {
+        console.log(request.body.queryResult.parameters['top-rated']);
         var req = unirest("GET", "https://api.themoviedb.org/3/movie/top_rated");
             req.query({
                 "page": "1",
@@ -43,7 +44,7 @@ server.post('/getMovies',function (request,response)  {
             });
     } else if(request.body.queryResult.parameters['movie-name']) {
      //   console.log('popular-movies param found');
-        let movie = request.body.result.parameters['movie-name'].value;
+        let movie = request.body.result.parameters[0].value;
         var req = unirest("GET", "https://api.themoviedb.org/3/search/movie");
             req.query({
                 "include_adult": "false",

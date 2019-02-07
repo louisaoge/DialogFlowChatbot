@@ -41,9 +41,9 @@ server.post('/getMovies',function (request,response)  {
                     })); 
                 }
             });
-    } else if(request.body.result.parameters['movie-name']) {
+    } else if(request.body.queryResult.parameters['movie-name']) {
      //   console.log('popular-movies param found');
-        let movie = request.body.result.parameters['movie-name'];
+        let movie = request.body.result.parameters.movie-name.value;
         var req = unirest("GET", "https://api.themoviedb.org/3/search/movie");
             req.query({
                 "include_adult": "false",
@@ -66,8 +66,9 @@ server.post('/getMovies',function (request,response)  {
                 "\n Plot : " + result.overview + "url" + result.poster_path
                     response.setHeader('Content-Type', 'application/json');
                     response.send(JSON.stringify({
-                        "speech" : output,
-                        "displayText" : output
+                        "fulfillmentText" : output,
+                        "fulfillmentMessages" :[{"text": {"text": [output]}}],
+                        "source":""
                     }));
                 } else {
                     response.setHeader('Content-Type', 'application/json');

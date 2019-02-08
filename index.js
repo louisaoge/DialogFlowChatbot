@@ -12,7 +12,7 @@ const server = express();
 server.use(bodyParser.json());
 server.post('/getMovies',function (request,response)  {
     if(request.body.queryResult.parameters['top-rated']) {
-        console.log(request.body.queryResult.parameters['top-rated']);
+       // console.log(request.body.queryResult.parameters['top-rated']);
         var req = unirest("GET", "https://api.themoviedb.org/3/movie/top_rated");
             req.query({
                 "page": "1",
@@ -47,7 +47,7 @@ server.post('/getMovies',function (request,response)  {
         let movie = request.body.queryResult.queryText;
         var req = unirest("GET", "https://api.themoviedb.org/3/search/movie");
             req.query({
-                "include_adult": "false",
+                "include_adult": "true",
                 "page": "1",
                 "query":movie,
                 "language": "en-US",
@@ -101,7 +101,7 @@ server.post('/getMovies',function (request,response)  {
                     let output = '';
                     for(let i = 0; i < result.length;i++) {
                         output += result[i].title;
-                        output+="\n"
+                        output += "\n"
                     }
                     response.setHeader('Content-Type', 'application/json');
                     response.send(JSON.stringify({

@@ -75,7 +75,7 @@ server.post('/getMovies',function (request,response)  {
                     response.setHeader('Content-Type', 'application/json');
                     response.send(JSON.stringify({
                         "fulfillmentText" : "Couldn't find any deatails. :( " ,
-                        "fulfillmentMessages" :[{"text": {"text": ["Couldn't find any deatails. :(  "]}}],
+                        "fulfillmentMessages" :[{"text": {"text": ["Couldn't find any details. :(  "]}}],
                         "source":""
                     }));
                 }
@@ -106,7 +106,8 @@ server.post('/getMovies',function (request,response)  {
                     response.setHeader('Content-Type', 'application/json');
                     response.send(JSON.stringify({
                         "fulfillmentText" : output,
-                        "fulfillmentMessages" : output
+                        "fulfillmentMessages" :[{"text": {"text": [output]}}],
+                        "source":""
                     })); 
                 }
             });

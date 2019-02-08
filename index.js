@@ -24,8 +24,8 @@ server.post('/getMovies',function (request,response)  {
                 if(res.error) {
                     response.setHeader('Content-Type', 'application/json');
                     response.send(JSON.stringify({
-                        "speech" : "Error. Can you try it again ? ",
-                        "displayText" : "Error. Can you try it again ? "
+                        "fulfillmentText" : "Error. Can you try it again ? ",
+                        "fulfillmentMessages" : "Error. Can you try it again ? "
                     }));
                 } else if(res.body.results.length > 0) {
                     let result = res.body.results;
@@ -58,8 +58,8 @@ server.post('/getMovies',function (request,response)  {
                 if(res.error) {
                     response.setHeader('Content-Type', 'application/json');
                     response.send(JSON.stringify({
-                        "speech" : "Error. Can you try it again ? ",
-                        "displayText" : "Error. Can you try it again ? "
+                        "fulfillmentText" : "Error. Can you try it again ? ",
+                        "fulfillmentMessages" : "Error. Can you try it again ? "
                     }));
                 } else if(res.body.results.length > 0) {
                 let result = res.body.results[0];
@@ -74,13 +74,14 @@ server.post('/getMovies',function (request,response)  {
                 } else {
                     response.setHeader('Content-Type', 'application/json');
                     response.send(JSON.stringify({
-                        "speech" : "Couldn't find any deatails. :(  ",
-                        "displayText" : "Couldn't find any deatails. :(  "
+                        "fulfillmentText" : "Couldn't find any deatails. :( " ,
+                        "fulfillmentMessages" :[{"text": {"text": ["Couldn't find any deatails. :(  "]}}],
+                        "source":""
                     }));
                 }
             });
 
-    } else if(request.body.result.parameters['popular-movies']) {    
+    } else if(request.body.queryResult.parameters['popular-movies']) {    
         var req = unirest("GET", "https://api.themoviedb.org/3/movie/popular");
             req.query({
                 "page": "1",
@@ -92,8 +93,8 @@ server.post('/getMovies',function (request,response)  {
                 if(res.error) {
                     response.setHeader('Content-Type', 'application/json');
                     response.send(JSON.stringify({
-                        "speech" : "Error. Can you try it again ? ",
-                        "displayText" : "Error. Can you try it again ? "
+                        "fulfillmentText" : "Error. Can you try it again ? ",
+                        "fulfillmentMessages" : "Error. Can you try it again ? "
                     }));
                 } else {
                     let result = res.body.results;
@@ -104,8 +105,8 @@ server.post('/getMovies',function (request,response)  {
                     }
                     response.setHeader('Content-Type', 'application/json');
                     response.send(JSON.stringify({
-                        "speech" : output,
-                        "displayText" : output
+                        "fulfillmentText" : output,
+                        "fulfillmentMessages" : output
                     })); 
                 }
             });

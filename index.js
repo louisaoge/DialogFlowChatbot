@@ -100,7 +100,7 @@ server.post('/getMovies',function (request,response)  {
                            "fulfillmentText" : "Error. Can you try it again ? ",
                            "fulfillmentMessages" : "Error. Can you try it again ? "
                        }));
-                   }else if(res.body.results.length > 0) {
+                   }else if(res.body.result.length > 0) {
                     let result = res.body.result[0].GetFunds;
                     let output = '';
                     for(let i = 0; i<result.length;i++) {

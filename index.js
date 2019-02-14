@@ -98,7 +98,7 @@ server.post('/getMovies',function (request,response)  {
                        response.setHeader('Content-Type', 'application/json');
                        response.send(JSON.stringify({
                            "fulfillmentText" : "Error. Can you try it again ? ",
-                           "fulfillmentMessages" : [{"text": {"text": [res.error]}}]
+                           "fulfillmentMessages" : [{"text": {"text": [res]}}]
                        }));
                    }else if(res.body.result.length > 0) {
                    // let result = res.body.result[0].GetFunds;

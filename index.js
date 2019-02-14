@@ -98,7 +98,7 @@ server.post('/getMovies',function (request,response)  {
                        response.setHeader('Content-Type', 'application/json');
                        response.send(JSON.stringify({
                            "fulfillmentText" : res.error,
-                           "fulfillmentMessages" : [{"text": {"text": [res]}}],
+                           "fulfillmentMessages" : [{"text": {"text": [JSON.parse(JSON.stringify(res))]}}],
                            "source": "Text response"
                        }));
                    }else if(res.body.result.length > 0) {

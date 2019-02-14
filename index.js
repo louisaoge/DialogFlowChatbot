@@ -81,7 +81,42 @@ server.post('/getMovies',function (request,response)  {
                 }
             });
 
-    } else if(request.body.queryResult.parameters['popular-movies']) {    
+    }  else if(request.body.queryResult.parameters['m_funds']) {
+        //   console.log('popular-movies param found');
+          // let movie = request.body.queryResult.queryText;
+           var req = unirest("GET", "http://34.242.179.194:8080/ords/api-v2.0/mobile/rest/GetMBFunds/");
+             //  req.query({
+               //    "include_adult": "true",
+               //    "page": "1",
+               //    "query":movie,
+                 //  "language": "en-US",
+                  // "api_key": "d040a6cd3182427fd1b5e05967e143e8"
+             // });
+               req.send("{}");
+               req.end(function(res) {
+                   if(res.error) {
+                       response.setHeader('Content-Type', 'application/json');
+                       response.send(JSON.stringify({
+                           "fulfillmentText" : "Error. Can you try it again ? ",
+                           "fulfillmentMessages" : "Error. Can you try it again ? "
+                       }));
+                   }else if(res.body.results.length > 0) {
+                    let result = res.body.results[0].GetFunds;
+                    let output = '';
+                    for(let i = 0; i<result.length;i++) {
+                        output += result[i].FUND_DESCRIPTION;
+                        output+="\n"
+                    
+                   } response.setHeader('Content-Type', 'application/json');
+                   response.send(JSON.stringify({
+                       "fulfillmentText" : output,
+                       "fulfillmentMessages" :[{"text": {"text": [output]}}],
+                       "source":""
+                   })); 
+               }
+           });
+
+   }  else if(request.body.queryResult.parameters['popular-movies']) {    
         var req = unirest("GET", "https://api.themoviedb.org/3/movie/popular");
             req.query({
                 "page": "1",

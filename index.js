@@ -106,7 +106,7 @@ server.post('/getMovies',function (request,response)  {
                    // for(let i = 0; i<result.length;i++) {
                       //  output += result[i].FUND_DESCRIPTION;
                        // output+="\n"
-                       output=res.body.result[0];
+                       output="hiiii";
                     
                    } response.setHeader('Content-Type', 'application/json');
                    response.send(JSON.stringify({

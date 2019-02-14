@@ -114,10 +114,11 @@ server.post('/getMovies',function (request,response)  {
                        "fulfillmentMessages" :[{"text": {"text": [output]}}],
                        "source":""
                    })); 
-               }
-           });
-
-   }  else if(request.body.queryResult.parameters['popular-movies']) {    
+               })
+           }
+        
+    
+    else if(request.body.queryResult.parameters['popular-movies']) {    
         var req = unirest("GET", "https://api.themoviedb.org/3/movie/popular");
             req.query({
                 "page": "1",

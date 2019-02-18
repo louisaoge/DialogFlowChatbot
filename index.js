@@ -130,7 +130,15 @@ request.end(function(res) {
                          "fulfillmentText" : "Error. Can you try it again ? ",
                          "fulfillmentMessages" : [{"text": {"text": ["Error. Can you try it again ? "]}}]
                      }));
-                 } else if(res.body.result.length > 0) {
+                 } 
+                 else if(res.body.status == "fail") {
+                    response.setHeader('Content-Type', 'application/json');
+                    response.send(JSON.stringify({
+                        "fulfillmentText" : "Please enter a valid Fund ID ",
+                        "fulfillmentMessages" : [{"text": {"text": ["Please enter a valid Fund ID "]}}]
+                    }));
+                } 
+                 else if(res.body.status == "success") {
                      let result = res.body.result[0].GetFundPrice;
                      let output = 'Bid Price ='+result[0].BID_PRICE + "\n Offer Price : " + result[0].OFFER_PRICE;
                      
@@ -141,6 +149,15 @@ request.end(function(res) {
                          "source":""
                      })); 
                  }
+
+                 else  {
+                    response.setHeader('Content-Type', 'application/json');
+                    response.send(JSON.stringify({
+                        "fulfillmentText" : "Please try again",
+                        "fulfillmentMessages" :[{"text": {"text": ["Please try again"]}}],
+                        "source":""
+                    })); 
+                }
              });
      }
 
